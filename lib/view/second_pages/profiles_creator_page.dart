@@ -238,7 +238,7 @@ class _ProfilesCreatorPageState extends State<ProfilesCreatorPage> {
   boxBorder() {
     return BoxDecoration(
         border: Border.all(
-            color: _isDark ? Colors.white : Colors.blueAccent, width: 2.5),
+            color: _isDark ? Colors.white : Colors.black, width: 2.5),
         borderRadius: const BorderRadius.all(Radius.circular(15)));
   }
 
