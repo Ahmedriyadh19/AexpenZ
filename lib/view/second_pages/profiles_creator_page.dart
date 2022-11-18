@@ -160,80 +160,86 @@ class _ProfilesCreatorPageState extends State<ProfilesCreatorPage> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton(
-              onPressed: () {
-                showAlertDialogCategory(
-                    context: context,
-                    category: 0,
-                    isCreate: true,
-                    profile: index);
-              },
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                      _isDark ? _darkColor : _lightColor)),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
+          Container(
+            decoration: boxBorder(),
+            child: TextButton(
+                onPressed: () {
+                  showAlertDialogCategory(
+                      context: context,
+                      category: 0,
+                      isCreate: true,
+                      profile: index);
+                },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        _isDark ? _darkColor : _lightColor)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
-                    Icon(Icons.add_box_rounded),
+                    Icon(Icons.add_box_rounded, color: Colors.white),
                     SizedBox(height: 5),
-                    Text('Category'),
+                    Text('Category', style: TextStyle(color: Colors.white)),
                   ],
-                ),
-              )),
-          ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  showAlertDialogProfile(
-                      context: context, isEdit: true, targetIndex: index);
-                });
-              },
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                      _isDark ? _darkColor : _lightColor)),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
+                )),
+          ),
+          Container(
+            decoration: boxBorder(),
+            child: TextButton(
+                onPressed: () {
+                  setState(() {
+                    showAlertDialogProfile(
+                        context: context, isEdit: true, targetIndex: index);
+                  });
+                },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        _isDark ? _darkColor : _lightColor)),
                 child: Column(
                   children: const [
-                    Icon(Icons.edit),
+                    Icon(Icons.edit, color: Colors.white),
                     SizedBox(height: 5),
-                    Text('Profile'),
+                    Text('Profile', style: TextStyle(color: Colors.white)),
                   ],
-                ),
-              )),
-          ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  if (_admin.profiles.length <= 1) {
-                    dialogDeletingProfile(
-                        targetIndex: index,
-                        isOne: true,
-                        dialog: "You can't delete the root profile");
-                  } else {
-                    dialogDeletingProfile(targetIndex: index, isOne: false);
-                  }
-                });
-              },
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                      _isDark ? _darkColor : _lightColor)),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
+                )),
+          ),
+          Container(
+            decoration: boxBorder(),
+            child: TextButton(
+                onPressed: () {
+                  setState(() {
+                    if (_admin.profiles.length <= 1) {
+                      dialogDeletingProfile(
+                          targetIndex: index,
+                          isOne: true,
+                          dialog: "You can't delete the root profile");
+                    } else {
+                      dialogDeletingProfile(targetIndex: index, isOne: false);
+                    }
+                  });
+                },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        _isDark ? _darkColor : _lightColor)),
                 child: Column(
                   children: const [
-                    Icon(Icons.delete_forever_rounded),
+                    Icon(Icons.delete_forever_rounded, color: Colors.white),
                     SizedBox(height: 5),
-                    Text('Profile'),
+                    Text('Profile', style: TextStyle(color: Colors.white)),
                   ],
-                ),
-              )),
+                )),
+          ),
         ],
       ),
     );
+  }
+
+  boxBorder() {
+    return BoxDecoration(
+        border: Border.all(
+            color: _isDark ? Colors.white : Colors.blueAccent, width: 2.5),
+        borderRadius: const BorderRadius.all(Radius.circular(15)));
   }
 
   AwesomeDialog dialogDeletingProfile(
